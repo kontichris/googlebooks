@@ -22,6 +22,8 @@ public class Item {
         this.accessInfo = accessInfo;
     }
 
+    
+
     public String getKind() {
         return kind;
     }
@@ -88,7 +90,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" + "kind=" + kind + ", id=" + id + ", etag=" + etag + ", selfLink=" + selfLink + ", saleInfo=" + saleInfo + ", searchInfo=" + searchInfo + ", volumeInfo=" + volumeInfo + ", accessInfo=" + accessInfo + '}';
+        return "Item{" + "kind=" + kind + "\n id=" + id + "\n etag=" + etag + "\n selfLink=" + selfLink + "\n saleInfo=" + saleInfo + "\n searchInfo=" + searchInfo + "\n volumeInfo=" + volumeInfo + "\n accessInfo=" + accessInfo + '}';
     }
     
     

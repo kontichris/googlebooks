@@ -1,9 +1,12 @@
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import okhttp3.OkHttpClient;
@@ -18,7 +21,7 @@ public class PerformingSearch {
     private static ObjectMapper objectMapper = new ObjectMapper();
 
     public static void searchVolumes(String searchTerm) throws IOException {
-        Main.historyList.add(searchTerm);
+        
 
         // Create a client
         OkHttpClient client = new OkHttpClient();
@@ -46,21 +49,35 @@ public class PerformingSearch {
         }
         JSONArray items = json.getJSONArray("items");
         
-        JFrame frame = new JFrame();
-        frame.setSize(500,700);
-        JTextArea tarea = new JTextArea();
-        frame.add(tarea);
+        
+        //dimiourgia thread gia tin emfanisi apotelesmatwn se 3exwristo thread/parathuro apto menu
+        Thread inlineThread = new Thread() {
+            public void run() {
+                JFrame frame = new JFrame();
+                frame.setSize(500,700);
+                JTextArea tarea = new JTextArea();
+                frame.add(tarea);
+                tarea.setLineWrap(true);
 
-        for (int i = 0; i < items.length(); i++) {
-            JSONObject itemjson = items.getJSONObject(i);
-            Item item = objectMapper.readValue(itemjson.toString(), Item.class);
-            itemsList.add(item);
-            System.out.println(item);
-            tarea.append(item.toString());
-            tarea.append("------------");
-        }
-    
-        frame.setVisible(true);
+                for (int i = 0; i < items.length(); i++) {
+                    try {
+                        JSONObject itemjson = items.getJSONObject(i);
+                        Item item = objectMapper.readValue(itemjson.toString(), Item.class);
+                        System.out.println(item);
+                        tarea.append(item.toString() + "\n");
+                        tarea.append("------------");
+                    } catch (JsonProcessingException ex) {
+                        Logger.getLogger(PerformingSearch.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
+
+                frame.setVisible(true);
+            }
+        };
+        inlineThread.start();
+        
+        
     }
 
 }

@@ -32,7 +32,7 @@ class ReadingModes {
 
     @Override
     public String toString() {
-        return "ReadingModes{" + "image=" + image + ", text=" + text + '}';
+        return "ReadingModes{" + "image=" + image + "\n text=" + text + '}';
     }
     
     
@@ -64,7 +64,7 @@ class ImageLinks {
 
     @Override
     public String toString() {
-        return "ImageLinks{" + "thumbnail=" + thumbnail + ", smallThumbnail=" + smallThumbnail + '}';
+        return "ImageLinks{" + "thumbnail=" + thumbnail + "\n smallThumbnail=" + smallThumbnail + '}';
     }
     
     
@@ -102,7 +102,7 @@ class PanelizationSummary {
 
     @Override
     public String toString() {
-        return "PanelizationSummary{" + "containsImageBubbles=" + containsImageBubbles + ", containsEpubBubbles=" + containsEpubBubbles + '}';
+        return "PanelizationSummary{" + "containsImageBubbles=" + containsImageBubbles + "\n containsEpubBubbles=" + containsEpubBubbles + '}';
     }
 
    
@@ -138,7 +138,7 @@ class IndustryIdentifiers{
 
     @Override
     public String toString() {
-        return "IndustryIdentifiers{" + "identifier=" + identifier + ", type=" + type + '}';
+        return "IndustryIdentifiers{" + "identifier=" + identifier + "\n type=" + type + '}';
     }
     
 }
@@ -197,6 +197,8 @@ public class VolumeInfo {
         this.averageRating = averageRating;
         this.ratingsCount = ratingsCount;
     }
+
+   
 
     public IndustryIdentifiers[] getIndustryIdentifiers() {
         return industryIdentifiers;
@@ -373,10 +375,21 @@ public class VolumeInfo {
     public void setRatingsCount(int ratingsCount) {
         this.ratingsCount = ratingsCount;
     }
+    
+    
 
     @Override
     public String toString() {
-        return "VolumeInfo{" + "industryIdentifiers=" + industryIdentifiers + ", pageCount=" + pageCount + ", printType=" + printType + ", readingModes=" + readingModes + ", previewLink=" + previewLink + ", canonicalVolumeLink=" + canonicalVolumeLink + ", language=" + language + ", title=" + title + ", imageLinks=" + imageLinks + ", panelizationSummary=" + panelizationSummary + ", publishedDate=" + publishedDate + ", categories=" + categories + ", maturityRating=" + maturityRating + ", allowAnonLogging=" + allowAnonLogging + ", contentVersion=" + contentVersion + ", subtitle=" + subtitle + ", authors=" + authors + ", infoLink=" + infoLink + ", publisher=" + publisher + ", description=" + description + ", averageRating=" + averageRating + ", ratingsCount=" + ratingsCount + '}';
+        return "VolumeInfo{" + "industryIdentifiers=" + printTableIdent() + "\n pageCount=" + pageCount + "\n printType=" + printType + "\n readingModes=" + readingModes + "\n previewLink=" + previewLink + "\n canonicalVolumeLink=" + canonicalVolumeLink + "\n language=" + language + "\n title=" + title + "\n imageLinks=" + imageLinks + "\n panelizationSummary=" + panelizationSummary + "\n publishedDate=" + publishedDate + "\n categories=" + categories + "\n maturityRating=" + maturityRating + "\n allowAnonLogging=" + allowAnonLogging + "\n contentVersion=" + contentVersion + "\n subtitle=" + subtitle + "\n authors=" + authors + "\n infoLink=" + infoLink + "\n publisher=" + publisher + "\n description=" + description + "\n averageRating=" + averageRating + "\n ratingsCount=" + ratingsCount + '}';
+    }
+
+    private String printTableIdent() {
+        String text = "";
+        for (IndustryIdentifiers ind : industryIdentifiers){
+            text += ind.toString() + "\n";
+        }
+        return text;
+                
     }
 
     

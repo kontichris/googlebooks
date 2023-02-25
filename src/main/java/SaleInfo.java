@@ -40,7 +40,7 @@ public class SaleInfo {
 
     @Override
     public String toString() {
-        return "SaleInfo{" + "country=" + country + ", isEbook=" + isEbook + ", saleability=" + saleability + '}';
+        return "SaleInfo{" + "country=" + country + "\n isEbook=" + isEbook + "\n saleability=" + saleability + '}';
     }
     
     

@@ -82,6 +82,8 @@ public class AccessInfo {
         this.selfLink = selfLink;
     }
 
+   
+
     public String getAccessViewStatus() {
         return accessViewStatus;
     }
@@ -172,7 +174,7 @@ public class AccessInfo {
 
     @Override
     public String toString() {
-        return "AccessInfo{" + "accessViewStatus=" + accessViewStatus + ", country=" + country + ", viewability=" + viewability + ", webReaderLink=" + webReaderLink + ", pdf=" + pdf + ", epub=" + epub + ", publicDomain=" + publicDomain + ", quoteSharingAllowed=" + quoteSharingAllowed + ", embeddable=" + embeddable + ", textToSpeechPermission=" + textToSpeechPermission + ", selfLink=" + selfLink + '}';
+        return "AccessInfo{" + "accessViewStatus=" + accessViewStatus + "\n country=" + country + "\n viewability=" + viewability + "\n webReaderLink=" + webReaderLink + "\n pdf=" + pdf + "\n epub=" + epub + "\n publicDomain=" + publicDomain + "\n quoteSharingAllowed=" + quoteSharingAllowed + "\n embeddable=" + embeddable + "\n textToSpeechPermission=" + textToSpeechPermission + "\n selfLink=" + selfLink + '}';
     }
     
     
